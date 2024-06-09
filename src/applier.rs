@@ -233,7 +233,8 @@ impl<'a, F: QueryFilter> SnapshotApplier<'a, F> {
             let mut queue = CommandQueue::default();
             let mut commands = Commands::new(&mut queue, self.world);
 
-            for (_, entity) in entity_map {
+            for dynamic_entity in &self.snapshot.entities {
+                let entity = entity_map.get(&dynamic_entity.entity).unwrap();
                 let entity_ref = self.world.entity(*entity);
                 let mut entity_mut = commands.entity(*entity);
 

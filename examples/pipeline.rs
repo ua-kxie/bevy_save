@@ -1,7 +1,9 @@
 //! An example of how to implement your own `Pipeline`.
 
 use bevy::{
-    ecs::entity::EntityHashMap, prelude::*, utils::HashMap
+    ecs::entity::EntityHashMap,
+    prelude::*,
+    utils::HashMap,
 };
 use bevy_inspector_egui::quick::WorldInspectorPlugin;
 use bevy_save::prelude::*;
