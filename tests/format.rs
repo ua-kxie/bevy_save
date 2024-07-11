@@ -48,7 +48,7 @@ fn init_app() -> App {
         .register_type::<Option<u32>>()
         .register_type::<Position>();
 
-    let world = &mut app.world;
+    let world = app.world_mut();
 
     world.spawn(());
 
@@ -99,7 +99,7 @@ fn test_json() {
     }
 
     let mut app = init_app();
-    let world = &mut app.world;
+    let world = app.world_mut();
 
     let registry = world.resource::<AppTypeRegistry>();
     let snapshot = extract(world);
@@ -188,7 +188,7 @@ fn test_mp() {
     }
 
     let mut app = init_app();
-    let world = &mut app.world;
+    let world = app.world_mut();
 
     let registry = world.resource::<AppTypeRegistry>();
     let snapshot = extract(world);

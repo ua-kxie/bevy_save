@@ -17,7 +17,7 @@ pub trait Pipeline: Sized {
 
     /// Called when the pipeline is initialized with [`App::init_pipeline`](`AppSaveableExt::init_pipeline`).
     fn build(app: &mut App) {
-        app.world.insert_resource(Self::Backend::default());
+        app.world_mut().insert_resource(Self::Backend::default());
     }
 
     /// Retrieve the unique identifier for the [`Snapshot`] being processed by the [`Pipeline`].

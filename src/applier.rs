@@ -8,11 +8,8 @@ use bevy::{
         entity::EntityHashMap,
         query::QueryFilter,
         reflect::ReflectMapEntities,
-        system::{
-            CommandQueue,
-            EntityCommands,
-        },
-        world::EntityRef,
+        system::EntityCommands,
+        world::{EntityRef, CommandQueue},
     },
     prelude::*,
     scene::SceneSpawnError,
@@ -151,7 +148,7 @@ impl<'a, F: QueryFilter> SnapshotApplier<'a, F> {
 
             // If the world already contains an instance of the given resource
             // just apply the (possibly) new value, otherwise insert the resource
-            reflect_resource.apply_or_insert(self.world, &**resource);
+            reflect_resource.apply_or_insert(self.world, &**resource, &type_registry);
         }
 
         // Despawn entities
