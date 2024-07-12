@@ -4,10 +4,10 @@ use bevy::{
     ecs::entity::Entity,
     reflect::{
         serde::{
+            ReflectDeserializer,
             TypeRegistrationDeserializer,
             TypedReflectDeserializer,
             TypedReflectSerializer,
-            ReflectDeserializer,
         },
         Reflect,
         TypeRegistry,
@@ -651,9 +651,7 @@ impl<'a, 'de> Visitor<'de> for ReflectMapVisitor<'a> {
         A: SeqAccess<'de>,
     {
         let mut dynamic_properties = Vec::new();
-        while let Some(entity) =
-            seq.next_element_seed(ReflectDeserializer::new(self.registry))?
-        {
+        while let Some(entity) = seq.next_element_seed(ReflectDeserializer::new(self.registry))? {
             dynamic_properties.push(entity);
         }
 

@@ -9,7 +9,10 @@ use bevy::{
         query::QueryFilter,
         reflect::ReflectMapEntities,
         system::EntityCommands,
-        world::{EntityRef, CommandQueue},
+        world::{
+            CommandQueue,
+            EntityRef,
+        },
     },
     prelude::*,
     scene::SceneSpawnError,
